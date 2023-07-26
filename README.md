@@ -15,12 +15,11 @@
 
 - Build:
   ```
-  DOCKER_BUILDKIT=1 docker build -t hiennguyen9874/triton-tensorrt:21.10-py3-75 \
+  DOCKER_BUILDKIT=1 docker build -t hiennguyen9874/triton-tensorrt:21.10-py3 \
       --build-arg TRITON_VERSION=21.10 \
       --build-arg TRT_OSS_CHECKOUT_TAG=release/8.2 \
-      --build-arg DGPU_ARCHS=75 \
       --build-arg TENSORRT_REPO=https://github.com/hiennguyen9874/TensorRT \
       -f Dockerfile \
       .
   ```
-- Push: `docker push hiennguyen9874/triton-tensorrt:21.10-py3-75`
+- Push: `docker push hiennguyen9874/triton-tensorrt:21.10-py3`
