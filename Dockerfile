@@ -1,4 +1,4 @@
-ARG TRITON_VERSION=21.10
+ARG TRITON_VERSION=23.03
 FROM nvcr.io/nvidia/tritonserver:${TRITON_VERSION}-py3 as base
 
 USER root
@@ -51,7 +51,7 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.19.5/cmake-3.19.5
     && rm -rf /tmp/cmake-3.19.5-Linux-x86_64/
 
 # Build tensorRT
-ARG TRT_OSS_CHECKOUT_TAG=release/8.2
+ARG TRT_OSS_CHECKOUT_TAG=release/8.5
 ARG TENSORRT_REPO=https://github.com/hiennguyen9874/TensorRT
 
 WORKDIR /tmp
