@@ -1,23 +1,9 @@
-ARG TRITON_VERSION=23.03
-FROM nvcr.io/nvidia/tritonserver:${TRITON_VERSION}-py3 as base
+ARG BASE_IMAGE=nvcr.io/nvidia/tritonserver:23.03-py3
+FROM ${BASE_IMAGE} as base
 
 USER root
 
 ENV DEBIAN_FRONTEND=noninteractive
-
-# ARG DISTRO=ubuntu2004
-# ARG ARCH=x86_64
-
-RUN apt-key del 7fa2af80 \
-    # && wget https://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}/${ARCH}/cuda-keyring_1.0-1_all.deb \
-    # && dpkg -i ./cuda-keyring_1.0-1_all.deb \
-    # && sed -i '/developer\.download\.nvidia\.com\/compute\/cuda\/repos/d' /etc/apt/sources.list.d/* \
-    # && sed -i '/developer\.download\.nvidia\.com\/compute\/machine-learning\/repos/d' /etc/apt/sources.list.d/* \
-    # && rm cuda-keyring_1.0-1_all.deb \
-    # TODO: ubuntu1804 WTF
-    && apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub \
-    && apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub \
-    && apt-get update -y
 
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
