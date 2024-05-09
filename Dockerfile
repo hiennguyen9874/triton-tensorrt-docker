@@ -69,11 +69,4 @@ RUN cp $(find /tmp/TensorRT -name "libnvinfer_plugin.so.8.*" -print -quit) \
     && cd /tmp \
     && rm -rf /tmp/TensorRT
 
-RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools Cython wheel \
-    && python3 -m pip install --no-cache-dir \
-    --extra-index-url https://download.pytorch.org/whl/cu113 \
-    numpy \
-    opencv-python \
-    torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1
-
 WORKDIR /opt/tritonserver
